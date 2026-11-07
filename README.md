@@ -4,7 +4,7 @@ A machine learning project that predicts the quality score of Arabica coffee sam
 
 I built it as the final project for the Machine Learning course in my Software Development specialization. It covers the full workflow, from cleaning a messy real-world dataset to training and comparing regression models and explaining what they learned.
 
-> The notebook's code comments and some plot labels are in Spanish.
+> Originally developed in Spanish for a university course. The original version is in the commit history.
 
 ## Dataset
 
@@ -17,6 +17,7 @@ The notebook downloads the dataset automatically with `kagglehub`.
 ## Workflow
 
 ### 1. Data cleaning and preprocessing
+
 - Checked for duplicates and measured the share of missing values in each column
 - Grouped inconsistent `Processing Method` labels into three categories: *Washed / Wet*, *Natural / Dry* and *Pulped natural / honey*
 - Cleaned the free-text `Altitude` field: converted ranges such as `"1500-1800"` to their midpoint, fixed malformed entries by hand and filled the rest with the mean
@@ -24,22 +25,27 @@ The notebook downloads the dataset automatically with `kagglehub`.
 - Dropped identifiers, contact fields, near-constant columns and columns that were mostly empty
 
 ### 2. Exploratory data analysis
+
 - Distributions of the numeric features and the target
 - Average score by country of origin
 - Relationship between altitude, each sensory attribute and the final score
 - Correlation matrix and correlation of each feature with the target
 
 ### 3. Feature engineering
+
 - One-hot encoding for `Processing Method`
 - Standardization of numeric features with `StandardScaler`
 
 ### 4. Modeling
+
 Compared three tree-based ensemble regressors, each tuned with `GridSearchCV` (3-fold CV) over `n_estimators`, `max_depth`, `min_samples_split` and `min_samples_leaf`:
+
 - Random Forest
 - Gradient Boosting
 - Extra Trees
 
 ### 5. Explainability
+
 - Permutation importance
 - SHAP summary plots for all three models
 - SHAP dependence plots for `Altitude`, `Quakers` and `Aroma`
